@@ -1,14 +1,14 @@
 {
-  "name": "clearbit",
-  "version": "1.3.2",
-  "description": "Client for Clearbit.co business intelligence APIs",
+  "name": "@umius/clearbit-umi",
+  "version": "1.0.0",
+  "description": "Client for Clearbit.co business intelligence APIs. Modified by and for UMI",
   "main": "./src",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/clearbit/clearbit-node.git"
+    "url": "https://github.com/unitedmotionideas/clearbit-node"
   },
   "keywords": [
     "clearbit",
@@ -18,14 +18,14 @@
   "author": "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/clearbit/clearbit-node/issues"
+    "url": "https://github.com/unitedmotionideas/clearbit-node/issues"
   },
-  "homepage": "https://github.com/clearbit/clearbit-node",
+  "homepage": "https://github.com/unitedmotionideas/clearbit-node",
   "dependencies": {
     "bluebird": "2",
     "create-error": "0.3",
     "needle": "clearbit/needle#ea566981076fb1f3864e4d736f522831364333ae",
-    "lodash": "2"
+    "lodash": "4"
   },
   "devDependencies": {
     "chai": "1",
