@@ -1,6 +1,12 @@
 clearbit-node [![Build Status](https://travis-ci.org/clearbit/clearbit-node.svg?branch=master)](https://travis-ci.org/clearbit/clearbit-node) [![Code Climate](https://codeclimate.com/github/clearbit/clearbit-node/badges/gpa.svg)](https://codeclimate.com/github/clearbit/clearbit-node) [![Test Coverage](https://codeclimate.com/github/clearbit/clearbit-node/badges/coverage.svg)](https://codeclimate.com/github/clearbit/clearbit-node)
 =============
 
+This is an UMI version of clearbit-node. The modification was done to include the 
+[Autocomplete API](https://clearbit.com/docs#autocomplete-api).
+
+
+
+
 Node library for querying the [Clearbit](https://clearbit.com) business intelligence APIs. Currently supports:
 
 * [Enrichment API](https://clearbit.com/docs#enrichment-api)
@@ -9,13 +15,32 @@ Node library for querying the [Clearbit](https://clearbit.com) business intellig
 
 ## Setup
 ```bash
-$ npm install clearbit
+$ npm install --save @umius/clearbit-umi
 ```
 ```js
 var clearbit = require('clearbit')('api_key');
 // or
 var Client   = require('clearbit').Client;
 var clearbit = new Client({key: 'api_key'});
+```
+
+## Using the Autocomplete API
+
+#### `Autocomplete.suggest(options)` -> `Promise`
+
+```ecmascript 6
+const clearbit = require('@umius/clearbit-umi')('k'); //kay is the key for a free API :P
+const searchQuery = encodeURIComponent('United Motion');
+
+const Autocomplete = clearbit.Autocomplete;
+Autocomplete.suggest({query: {query: searchQuery}})
+    .then(result=>{ 
+        result.forEach(suggestion=>{
+            console.log({name: suggestion.name, domain: suggestion.domain, logo: suggestion.logo});
+        });
+    }, err=>{
+        console.error(err);
+    });
 ```
 
 ## Performing Lookups

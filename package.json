@@ -1,6 +1,6 @@
 {
   "name": "@umius/clearbit-umi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Client for Clearbit.co business intelligence APIs. Modified by and for UMI",
   "main": "./src",
   "scripts": {

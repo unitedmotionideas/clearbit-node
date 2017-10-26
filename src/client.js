@@ -63,19 +63,26 @@ ClearbitClient.prototype.request = function (options) {
 
   var timeout = options.timeout || options.stream && 60000 || 10000;
 
-  return needle.requestAsync(
-    options.method,
-    this.url(options),
-    options.body || options.query,
-    {
-      json: options.json,
-      headers: options.headers,
-      timeout: timeout,
-      username: this.key,
-      password: '',
-      user_agent: 'ClearbitNode/v' + pkg.version
-    }
-  )
+    var reqOptions = options.api === "autocomplete" ? {
+            json: options.json,
+            headers: options.headers,
+            timeout: timeout,
+            user_agent: 'ClearbitNode/v' + pkg.version
+        } : {
+            json: options.json,
+            headers: options.headers,
+            timeout: timeout,
+            username: this.key,
+            password: '',
+            user_agent: 'ClearbitNode/v' + pkg.version
+        };
+
+    return needle.requestAsync(
+        options.method,
+        this.url(options),
+        options.body || options.query,
+        reqOptions
+    )
   .bind(this)
   .spread(function (response, body) {
     if (response.statusCode === 202 || response.statusCode >= 400) {
